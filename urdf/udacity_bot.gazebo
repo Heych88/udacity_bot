@@ -5,7 +5,7 @@
   </gazebo>
 
   <gazebo reference="left_wheel">
-    <material>Gazebo/Black</material>
+    <material>Gazebo/Blue</material>
   </gazebo>
 
   <gazebo reference="right_wheel">
@@ -27,6 +27,9 @@
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
       <robotBaseFrame>robot_footprint</robotBaseFrame>
+
+      <publishWheelJointState>true</publishWheelJointState>  <!-- false -->
+      <publishWheelTF>true</publishWheelTF>  <!-- false -->
     </plugin>
   </gazebo>
 

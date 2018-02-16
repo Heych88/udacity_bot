@@ -1,12 +1,15 @@
 map_type: costmap
 
-obstacle_range: 0.0
-raytrace_range: 0.0
+obstacle_range: 2.5
+raytrace_range: 3.0
 
-transform_tolerance: 0.0
+# dropped from 5 and followed path better
+transform_tolerance: 0.35
 
-robot_radius: 0.0 
-inflation_radius: 0.0
+robot_radius: 0.25
+inflation_radius: 0.3
+
+footprint: [ [-0.2, -0.25], [-0.2, 0.3], [0.2, 0.3], [0.2, -0.25] ]
 
 observation_sources: laser_scan_sensor
 
