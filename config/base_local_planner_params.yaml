@@ -1,13 +1,27 @@
 TrajectoryPlannerROS:
   max_vel_x: 0.5
   min_vel_x: 0.1
-  max_vel_theta: 0.5
+  max_vel_theta: 1.0
   min_in_place_vel_theta: 0.1
+  escape_vel: -0.5
 
   acc_lim_theta: 1.0
   acc_lim_x: 1.5
   acc_lim_y: 1.5
 
+  sim_time: 4
+
   meter_scoring: true
 
   holonomic_robot: false
+
+  vx_samples: 20  # number of samples to use when exploring the x velocity space
+  vtheta_samples: 20  # number of samples to use when exploring the theta velocity space
+
+  occdist_scale: 0.35  # cost for obstacle distance
+  gdist_scale: 0.8  # cost for goal distance
+  pdist_scale: 0.8  # cost for the path distance
+
+  heading_lookahead: 3.0  # how far the robot should look ahead of itself
+
+  planner_frequency: 20  # the Hz rate to run the planning loop
