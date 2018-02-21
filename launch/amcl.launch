@@ -55,7 +55,7 @@
 
     <!-- Odometry model parameters -->
     <!-- Which model to use, either "diff", "omni", "diff-corrected" or "omni-corrected". -->
-    <param name="odom_model_type" value="diff-corrected"/> <!-- diff -->
+    <param name="odom_model_type" value="diff"/> <!-- diff -->
     <!-- Which frame to use for odometry. -->
     <param name="odom_frame_id" value="odom"/> <!-- odom -->
     <!-- Which frame to use for the robot base -->
@@ -94,7 +94,8 @@
     <!-- sudo apt-get install ros-kinetic-eband-local-planner -->
     <!-- sudo apt-get install ros-kinetic-teb-local-planner -->
     <!-- <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/> -->
-    <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+    <!-- <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" /> -->
+    <param name="base_local_planner" value="eband_local_planner/EBandPlannerROS"/>
     <param name="controller_frequency" value="10.0" />
 
   </node>
