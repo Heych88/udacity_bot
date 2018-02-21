@@ -13,3 +13,11 @@ TrajectoryPlannerROS:
 
   meter_scoring: true
   holonomic_robot: false
+
+
+TebLocalPlannerROS:
+
+  wheelbase: 0.4
+  acc_lim_x: 0.25
+  acc_lim_y: 0.25
+  acc_lim_theta: 0.25

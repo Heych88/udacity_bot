@@ -19,11 +19,43 @@
     <!-- Allowed number of particles -->
     <param name="min_particles" value="50"/> <!-- 500 -->
     <param name="max_particles" value="500"/> <!-- 5000 -->
+    <!-- Translational (d), rotational (a) movement required before performing a filter update. -->
+    <!-- lower values impacts how accurate the particles are predicted to the actual bots position -->
+    <param name="update_min_d" value="0.1"/> <!-- 0.2 -->
+    <param name="update_min_a" value="0.26"/> <!-- π/6.0 radians 0.5236 -->
+    <!-- Number of filter updates required before resampling. -->
+    <param name="resample_interval" value="1"/> <!-- 2 -->
+    <!-- Initial pose mean (x, y, a), used to initialize filter with Gaussian distribution. -->
+    <param name="initial_pose_x" value="0.0"/> <!-- 0.0 -->
+    <param name="initial_pose_y" value="0.0"/> <!-- 0.0 -->
+    <param name="initial_pose_a" value="0.0"/> <!-- 0.0 -->
+    <!-- Initial covariance (xx, yy, aa), used to initialize filter with Gaussian distribution. -->
+    <param name="initial_cov_xx" value="0.0"/> <!-- 0.0 -->
+    <param name="initial_cov_yy" value="0.0"/> <!-- 0.0 -->
+    <param name="initial_cov_aa" value="0.0"/> <!-- 0.0 -->
+
+
+    <!-- Laser parameters -->
+    <!-- Scan range to be considered; -1.0 will cause the laser's reported minimum
+    range to be used. -->
+    <param name="laser_min_range" value="-1"/> <!-- -1 -->
+    <param name="laser_max_range" value="-1"/> <!-- -1 -->
+    <!-- How many evenly-spaced beams in each scan to be used when updating the filter. -->
+    <param name="laser_max_beams" value="50"/> <!-- 30 -->
+    <!-- Mixture weight for the z_xxx part of the model. -->
+    <param name="laser_z_hit" value="0.95"/> <!-- 0.95 -->
+    <param name="laser_z_short" value="0.1"/> <!-- 0.1 -->
+    <param name="laser_z_max" value="0.05"/> <!-- 0.05 -->
+    <param name="laser_z_rand" value="0.05"/> <!-- 0.05 -->
+    <!-- Standard deviation for Gaussian model used in z_hit part of the model. -->
+    <param name="laser_sigma_hit" value="0.2"/> <!-- 0.2 -->
+    <!-- Exponential decay parameter for z_short part of model. -->
+    <param name="laser_lambda_short" value="0.1"/> <!-- 0.1 -->
 
 
     <!-- Odometry model parameters -->
     <!-- Which model to use, either "diff", "omni", "diff-corrected" or "omni-corrected". -->
-    <param name="odom_model_type" value="diff"/> <!-- diff -->
+    <param name="odom_model_type" value="diff-corrected"/> <!-- diff -->
     <!-- Which frame to use for odometry. -->
     <param name="odom_frame_id" value="odom"/> <!-- odom -->
     <!-- Which frame to use for the robot base -->
@@ -53,8 +85,17 @@
     <remap from="odom" to="odom"/>
     <remap from="scan" to="udacity_bot/laser/scan"/>
 
-    <param name="base_global_planner" type="string" value="navfn/NavfnROS" />
-    <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/>
+    <!-- A fast, interpolated global planner built as a more flexible replacement to navfn.
+    (navfn/NavfnROS, global_planner/GlobalPlanner, carrot_planner/CarrotPlanner) -->
+    <param name="base_global_planner" type="string" value="global_planner/GlobalPlanner" />
+
+    <!-- provides an interface for local planners used in navigation -->
+    <!-- base_local_planner/TrajectoryPlannerROS, eband_local_planner/EBandPlannerROS, teb_local_planner/TebLocalPlannerROS  -->
+    <!-- sudo apt-get install ros-kinetic-eband-local-planner -->
+    <!-- sudo apt-get install ros-kinetic-teb-local-planner -->
+    <!-- <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/> -->
+    <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+    <param name="controller_frequency" value="10.0" />
 
   </node>
 
