@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- Map server -->
+  <arg name="map_file" default="$(find udacity_bot)/maps/jackal_race.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+  <!-- Place map frame at odometry frame -->
+  <node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster"
+      args="0 0 0 0 0 0 map odom 100"/>
+
+  <!-- Localization-->
+  <node pkg="amcl" type="amcl" name="amcl" output="screen">
+    <remap from="scan" to="udacity_bot/laser/scan"/>
+
+    <!-- Time with which to post-date the transform that is published, to
+    indicate that this transform is valid into the future. -->
+    <param name="transform_tolerance" value="0.1" /> <!-- 0.1 -->
+    <!-- Allowed number of particles -->
+    <param name="min_particles" value="50"/> <!-- 500 -->
+    <param name="max_particles" value="500"/> <!-- 5000 -->
+
+
+    <!-- Odometry model parameters -->
+    <!-- Which model to use, either "diff", "omni", "diff-corrected" or "omni-corrected". -->
+    <param name="odom_model_type" value="diff"/> <!-- diff -->
+    <!-- Which frame to use for odometry. -->
+    <param name="odom_frame_id" value="odom"/> <!-- odom -->
+    <!-- Which frame to use for the robot base -->
+    <param name="base_frame_id" value="robot_footprint"/>
+    <!-- The name of the coordinate frame published by the localization system -->
+    <param name="global_frame_id" value="map"/>
+    <!-- Specifies the expected noise in odometry's rotation estimate from the
+    rotational component of the robot's motion. -->
+    <param name="odom_alpha1" value="0.05"/> <!-- 0.2 -->
+    <param name="odom_alpha2" value="0.05"/> <!-- 0.2 -->
+    <param name="odom_alpha3" value="0.05"/> <!-- 0.2 -->
+    <param name="odom_alpha4" value="0.05"/> <!-- 0.2 -->
+    <!-- Translation-related noise parameter (only used if model is "omni"). -->
+    <param name="odom_alpha5" value="0.2"/> <!-- 0.2 -->
+
+  </node>
+
+  <!-- Move base -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find udacity_bot)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find udacity_bot)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find udacity_bot)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find udacity_bot)/config/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find udacity_bot)/config/base_local_planner_params.yaml" command="load" />
+
+    <remap from="cmd_vel" to="cmd_vel"/>
+    <remap from="odom" to="odom"/>
+    <remap from="scan" to="udacity_bot/laser/scan"/>
+
+    <param name="base_global_planner" type="string" value="navfn/NavfnROS" />
+    <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/>
+
+  </node>
+
+
+</launch>
