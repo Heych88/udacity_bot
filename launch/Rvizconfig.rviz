@@ -27,7 +27,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: Camera
+    SyncSource: ""
 Visualization Manager:
   Class: ""
   Displays:
@@ -59,22 +59,27 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        camera:
+        back_chassis:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        chassis:
+        front_chassis:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        hokuyo:
+        left_front_wheel:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
         left_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_front_wheel:
           Alpha: 1
           Show Axes: false
           Show Trail: false
