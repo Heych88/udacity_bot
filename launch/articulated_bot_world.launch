@@ -2,7 +2,7 @@
 
 <launch>
 
-  <include file="$(find udacity_bot)/launch/robot_description.launch"/>
+  <include file="$(find udacity_bot)/launch/articulated_robot_description.launch"/>
 
   <arg name="world" default="empty"/>
   <arg name="paused" default="false"/>
@@ -12,7 +12,7 @@
   <arg name="debug" default="false"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find udacity_bot)/worlds/jackal_race.world"/>  <!-- jackal_race.world, udacity.world  -->
+    <arg name="world_name" value="$(find udacity_bot)/worlds/udacity.world"/>  <!-- jackal_race.world, udacity.world  -->
     <arg name="paused" value="$(arg paused)"/>
     <arg name="use_sim_time" value="$(arg use_sim_time)"/>
     <arg name="gui" value="$(arg gui)"/>
