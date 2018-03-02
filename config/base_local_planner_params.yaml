@@ -26,8 +26,8 @@ EBandPlannerROS:
   marker_lifetime: 1.0  # Lifetime of eband visualization markers
 
   # Trajectory Controller Parameters
-  max_vel_th: 1.5  # Maximum linear velocity
-  max_vel_lin: 1.0  # Maximum angular velocity
+  max_vel_lin: 2.0  # Maximum linear velocity
+  max_vel_th: 1.0  # Maximum angular velocity
   min_vel_th: 0.0  # Minimum angular velocity
   min_in_place_vel_th: 0.1  # Minimum in-place angular velocity
   k_prop: 4.0  # Proportional gain of the PID controller
