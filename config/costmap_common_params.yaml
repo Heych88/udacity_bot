@@ -1,7 +1,7 @@
 map_type: costmap
 
-obstacle_range: 5
-raytrace_range: 6
+obstacle_range: 6
+raytrace_range: 7
 
 footprint: [ [-0.2, -0.25], [-0.2, 0.3], [0.2, 0.3], [0.2, -0.25] ]
 

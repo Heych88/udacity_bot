@@ -30,9 +30,9 @@
     <param name="initial_pose_y" value="0.0"/> <!-- 0.0 -->
     <param name="initial_pose_a" value="0.0"/> <!-- 0.0 -->
     <!-- Initial covariance (xx, yy, aa), used to initialize filter with Gaussian distribution. -->
-    <param name="initial_cov_xx" value="0.0"/> <!-- 0.0 -->
-    <param name="initial_cov_yy" value="0.0"/> <!-- 0.0 -->
-    <param name="initial_cov_aa" value="0.0"/> <!-- 0.0 -->
+    <param name="initial_cov_xx" value="1.0"/> <!-- 0.0 -->
+    <param name="initial_cov_yy" value="1.0"/> <!-- 0.0 -->
+    <param name="initial_cov_aa" value="1.0"/> <!-- 0.0 -->
 
 
     <!-- Laser parameters -->
@@ -55,7 +55,7 @@
 
     <!-- Odometry model parameters -->
     <!-- Which model to use, either "diff", "omni", "diff-corrected" or "omni-corrected". -->
-    <param name="odom_model_type" value="diff"/> <!-- diff -->
+    <param name="odom_model_type" value="diff-corrected"/> <!-- diff -->
     <!-- Which frame to use for odometry. -->
     <param name="odom_frame_id" value="odom"/> <!-- odom -->
     <!-- Which frame to use for the robot base -->
@@ -64,9 +64,13 @@
     <param name="global_frame_id" value="map"/>
     <!-- Specifies the expected noise in odometry's rotation estimate from the
     rotational component of the robot's motion. -->
+    <!-- 1 expected noise in odometry's rotation estimate from the rotational component -->
     <param name="odom_alpha1" value="0.05"/> <!-- 0.2 -->
+    <!-- 2 expected noise in odometry's rotation estimate from the translational component -->
     <param name="odom_alpha2" value="0.05"/> <!-- 0.2 -->
+    <!-- 3 expected noise in odometry's translation estimate from the translational component -->
     <param name="odom_alpha3" value="0.05"/> <!-- 0.2 -->
+    <!-- 4 expected noise in odometry's translation estimate from the rotational component -->
     <param name="odom_alpha4" value="0.05"/> <!-- 0.2 -->
     <!-- Translation-related noise parameter (only used if model is "omni"). -->
     <param name="odom_alpha5" value="0.2"/> <!-- 0.2 -->
@@ -96,7 +100,8 @@
     <!-- <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/> -->
     <!-- <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" /> -->
     <param name="base_local_planner" value="eband_local_planner/EBandPlannerROS"/>
-    <param name="controller_frequency" value="10.0" />
+    <param name="controller_frequency" value="50.0" />
+    <param name="planner_frequency" value="10.0" />
 
   </node>
 

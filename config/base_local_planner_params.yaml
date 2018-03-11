@@ -26,17 +26,18 @@ EBandPlannerROS:
   marker_lifetime: 1.0  # Lifetime of eband visualization markers
 
   # Trajectory Controller Parameters
-  max_vel_lin: 2.0  # Maximum linear velocity
+  max_vel_lin: 1.5  # Maximum linear velocity
   max_vel_th: 1.0  # Maximum angular velocity
-  min_vel_th: 0.0  # Minimum angular velocity
+  min_vel_th: 0.05  # Minimum angular velocity
   min_in_place_vel_th: 0.1  # Minimum in-place angular velocity
   k_prop: 4.0  # Proportional gain of the PID controller
   k_damp: 3.5  # Damping gain of the PID controller
+  k_int: 0.001   # I gain of the PID controller
   Ctrl_Rate: 10  # Control rate
-  max_translational_acceleration: 0.25  # Maximum linear acceleration
-  max_rotational_acceleration: 0.25  # Maximum angular acceleration
+  max_translational_acceleration: 0.05  # Maximum linear acceleration
+  max_rotational_acceleration: 0.1  # Maximum angular acceleration
   differential_drive: true  # Denotes whether to use the differential drive mode
-  max_acceleration: 0.25  # Maximum allowable acceleration
+  max_acceleration: 0.1  # Maximum allowable acceleration
 
 
 
