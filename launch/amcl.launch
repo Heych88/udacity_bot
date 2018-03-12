@@ -91,7 +91,7 @@
 
     <!-- A fast, interpolated global planner built as a more flexible replacement to navfn.
     (navfn/NavfnROS, global_planner/GlobalPlanner, carrot_planner/CarrotPlanner) -->
-    <param name="base_global_planner" type="string" value="navfn/NavfnROS" />
+    <param name="base_global_planner" type="string" value="global_planner/GlobalPlanner" />
 
     <!-- provides an interface for local planners used in navigation -->
     <!-- base_local_planner/TrajectoryPlannerROS, eband_local_planner/EBandPlannerROS, teb_local_planner/TebLocalPlannerROS  -->
