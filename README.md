@@ -3,6 +3,8 @@
 This repository contains a Robot Operating System (ROS) implementation of a differential drive Gazebo model for uses with the ROS navigation stack.
 The model uses the Adaptive Monte Carlo Localisation (AMCL) method for localisation with the Elastic band planner method to navigate to goal locations.
 
+![Differential drive robot model](images/diff-drive-bot.png)
+
 ## Project website
 
 This repository has an accompanying project page, contains the theory and details behind the code. It can be found [here](https://www.haidynmcleod.com/ROS_diff_drive_navigation).
